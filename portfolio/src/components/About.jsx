@@ -13,7 +13,10 @@ function About() {
   return (
     <section className="about" id="sobre">
       <div className="about-grid">
-        <div className="about-content">
+        <div
+          className="about-content reveal-left"
+          data-reveal
+        >
           <p className="section-label">SOBRE MIM</p>
 
           <h2>
@@ -38,16 +41,26 @@ function About() {
           </a>
         </div>
 
-        <div className="technologies">
+        <div
+          className="technologies reveal-right"
+          data-reveal
+          style={{
+            "--reveal-delay": "100ms",
+          }}
+        >
           <div className="technologies-top">
             <p>FERRAMENTAS</p>
+
             <span>STACK</span>
           </div>
 
           <div className="technology-list">
             {technologies.map((technology) => (
               <div className="technology-item" key={technology}>
-                <span className="technology-name">{technology}</span>
+                <span className="technology-name">
+                  {technology}
+                </span>
+
                 <span className="technology-dot"></span>
               </div>
             ))}

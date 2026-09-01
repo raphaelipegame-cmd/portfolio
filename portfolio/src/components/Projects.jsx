@@ -3,7 +3,10 @@ import safemindImage from "../assets/safemind.png";
 function Projects() {
   return (
     <section className="projects" id="projetos">
-      <div className="projects-header">
+      <div
+        className="projects-header reveal-up"
+        data-reveal
+      >
         <p className="section-label">PROJETOS</p>
 
         <h2>
@@ -17,7 +20,13 @@ function Projects() {
         </p>
       </div>
 
-      <article className="project-card">
+      <article
+        className="project-card reveal-up"
+        data-reveal
+        style={{
+          "--reveal-delay": "100ms",
+        }}
+      >
         <div className="project-image">
           <img
             src={safemindImage}
@@ -32,8 +41,8 @@ function Projects() {
 
           <p>
             Plataforma digital para bem-estar e prevenção no ambiente
-            corporativo, com check-ins, treinamentos, gamificação e
-            indicadores em uma única experiência.
+            corporativo, com check-ins, treinamentos, gamificação e indicadores
+            em uma única experiência.
           </p>
 
           <div className="project-tech">
@@ -49,7 +58,7 @@ function Projects() {
               rel="noreferrer"
               className="project-primary"
             >
-              Ver projeto ↗
+              Ver projeto <span>↗</span>
             </a>
           </div>
         </div>

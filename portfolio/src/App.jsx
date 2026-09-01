@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import "./App.css";
 
 import Projects from "./components/Projects";
@@ -5,13 +7,35 @@ import Services from "./components/Services";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
+import useReveal from "./hooks/useReveal";
+
 function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useReveal();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 35);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="app">
-      <header className="navbar">
+      <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <a className="logo" href="#" aria-label="Filipe Felix">
-  <img src="/favicon.png" alt="Logo Filipe Felix" />
-</a>
+          <img src="/favicon.png" alt="Logo Filipe Felix" />
+        </a>
 
         <nav>
           <a href="#projetos">Projetos</a>
@@ -26,7 +50,7 @@ function App() {
 
       <main>
         <section className="hero">
-          <div className="hero-content">
+          <div className="hero-content hero-enter">
             <p className="hero-label">
               DESENVOLVIMENTO WEB • SITES PARA NEGÓCIOS
             </p>
@@ -47,12 +71,12 @@ function App() {
               </a>
 
               <a href="#contato" className="secondary-button">
-                Tenho um projeto →
+                Tenho um projeto <span>→</span>
               </a>
             </div>
           </div>
 
-          <div className="hero-showcase">
+          <div className="hero-showcase hero-enter hero-enter-delay">
             <div className="availability">
               <span></span>
               Disponível para novos projetos

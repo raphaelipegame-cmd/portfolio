@@ -9,7 +9,10 @@ function Contact() {
   return (
     <>
       <section className="contact" id="contato">
-        <div className="contact-content">
+        <div
+          className="contact-content reveal-left"
+          data-reveal
+        >
           <p className="section-label">CONTATO</p>
 
           <h2>
@@ -33,7 +36,13 @@ function Contact() {
           </a>
         </div>
 
-        <div className="contact-links">
+        <div
+          className="contact-links reveal-right"
+          data-reveal
+          style={{
+            "--reveal-delay": "100ms",
+          }}
+        >
           <a
             href={whatsappUrl}
             target="_blank"
@@ -41,7 +50,10 @@ function Contact() {
             className="contact-item"
           >
             <div>
-              <span className="contact-label">WHATSAPP</span>
+              <span className="contact-label">
+                WHATSAPP
+              </span>
+
               <p>+55 24 99918-9942</p>
             </div>
 
@@ -53,7 +65,10 @@ function Contact() {
             className="contact-item"
           >
             <div>
-              <span className="contact-label">E-MAIL</span>
+              <span className="contact-label">
+                E-MAIL
+              </span>
+
               <p>fflimadev@gmail.com</p>
             </div>
 
@@ -67,7 +82,10 @@ function Contact() {
             className="contact-item"
           >
             <div>
-              <span className="contact-label">GITHUB</span>
+              <span className="contact-label">
+                GITHUB
+              </span>
+
               <p>raphaelipegame-cmd</p>
             </div>
 
@@ -78,8 +96,15 @@ function Contact() {
 
       <footer className="footer">
         <div className="footer-content">
-          <a href="#" className="footer-logo">
-            FF<span>.</span>
+          <a
+            href="#"
+            className="footer-logo"
+            aria-label="Voltar ao início"
+          >
+            <img
+              src="/favicon.png"
+              alt="Logo Filipe Felix"
+            />
           </a>
 
           <p>
@@ -87,7 +112,7 @@ function Contact() {
           </p>
 
           <a href="#" className="back-to-top">
-            Voltar ao topo ↑
+            Voltar ao topo <span>↑</span>
           </a>
         </div>
       </footer>

@@ -19,7 +19,10 @@ function Services() {
 
   return (
     <section className="services" id="servicos">
-      <div className="services-header">
+      <div
+        className="services-header reveal-up"
+        data-reveal
+      >
         <p className="section-label">O QUE EU FAÇO</p>
 
         <h2>
@@ -34,8 +37,15 @@ function Services() {
       </div>
 
       <div className="services-grid">
-        {services.map((service) => (
-          <article className="service-card" key={service.title}>
+        {services.map((service, index) => (
+          <article
+            className="service-card reveal-up"
+            data-reveal
+            style={{
+              "--reveal-delay": `${index * 90}ms`,
+            }}
+            key={service.title}
+          >
             <div className="service-line"></div>
 
             <h3>{service.title}</h3>
@@ -45,7 +55,13 @@ function Services() {
         ))}
       </div>
 
-      <div className="services-cta">
+      <div
+        className="services-cta reveal-up"
+        data-reveal
+        style={{
+          "--reveal-delay": "150ms",
+        }}
+      >
         <div>
           <p>PRECISA DE UM SITE?</p>
 

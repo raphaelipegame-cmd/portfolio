@@ -1705,3 +1705,534 @@ body {
 .logo:hover img {
   transform: scale(1.06);
 }
+/* =====================================================
+   MOTION SYSTEM
+===================================================== */
+
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: var(--reveal-delay, 0ms);
+
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translateY(38px);
+}
+
+.reveal-left {
+  transform: translateX(-38px);
+}
+
+.reveal-right {
+  transform: translateX(38px);
+}
+
+.reveal-up.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+}
+
+
+/* =====================================================
+   HERO ENTRANCE
+===================================================== */
+
+.hero-enter {
+  opacity: 0;
+
+  animation: heroEntrance 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.hero-enter-delay {
+  animation-delay: 180ms;
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   NAVBAR SCROLL
+===================================================== */
+
+.navbar {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease,
+    height 0.35s ease;
+}
+
+.navbar::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 0;
+
+  width: 100vw;
+  height: 1px;
+
+  background: transparent;
+
+  transform: translateX(-50%);
+
+  transition: background 0.35s ease;
+}
+
+.navbar-scrolled {
+  height: 72px;
+
+  background: rgba(9, 9, 11, 0.76);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar-scrolled::before {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* =====================================================
+   NAVIGATION MICROINTERACTION
+===================================================== */
+
+.navbar nav a {
+  position: relative;
+}
+
+.navbar nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -7px;
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--accent);
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  transition: transform 0.3s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar nav a:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo img {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.06) rotate(-2deg);
+
+  filter: brightness(1.08);
+}
+
+
+/* =====================================================
+   BUTTON MICROINTERACTIONS
+===================================================== */
+
+.primary-button,
+.project-primary,
+.contact-main-button,
+.services-cta a,
+.contact-button {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.primary-button::before,
+.project-primary::before,
+.contact-main-button::before,
+.services-cta a::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.16) 45%,
+    transparent 70%
+  );
+
+  transform: translateX(-120%);
+
+  transition: transform 0.65s ease;
+}
+
+.primary-button:hover::before,
+.project-primary:hover::before,
+.contact-main-button:hover::before,
+.services-cta a:hover::before {
+  transform: translateX(120%);
+}
+
+.secondary-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.secondary-button span {
+  transition: transform 0.25s ease;
+}
+
+.secondary-button:hover span {
+  transform: translateX(5px);
+}
+
+
+/* =====================================================
+   SAFE MIND CARD
+===================================================== */
+
+.project-image {
+  overflow: hidden;
+}
+
+.project-image img {
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.025);
+
+  filter: brightness(1.04);
+}
+
+.project-tech span {
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-tech span:hover {
+  color: var(--accent);
+
+  border-color: rgba(45, 212, 191, 0.4);
+
+  background: rgba(45, 212, 191, 0.05);
+}
+
+
+/* =====================================================
+   SERVICE CARDS
+===================================================== */
+
+.service-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.service-line {
+  transform: scaleX(0.35);
+
+  transform-origin: left;
+
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(45, 212, 191, 0.28);
+}
+
+.service-card:hover .service-line {
+  width: 80px;
+
+  transform: scaleX(1);
+}
+
+
+/* =====================================================
+   SHOWCASE CARD
+===================================================== */
+
+.showcase-card {
+  position: relative;
+}
+
+.showcase-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  border-radius: inherit;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(45, 212, 191, 0.1),
+      transparent 40%
+    );
+
+  transition: opacity 0.4s ease;
+}
+
+.showcase-card:hover::after {
+  opacity: 1;
+}
+
+.availability > span {
+  animation: availabilityPulse 2.4s ease-in-out
+    infinite;
+}
+
+@keyframes availabilityPulse {
+  0%,
+  100% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 0 0 rgba(34, 197, 94, 0.3),
+      0 0 12px rgba(34, 197, 94, 0.35);
+  }
+
+  50% {
+    opacity: 0.7;
+
+    box-shadow:
+      0 0 0 6px rgba(34, 197, 94, 0),
+      0 0 18px rgba(34, 197, 94, 0.45);
+  }
+}
+
+
+/* =====================================================
+   TECHNOLOGIES
+===================================================== */
+
+.technology-item {
+  position: relative;
+}
+
+.technology-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  width: 2px;
+  height: 0;
+
+  background: var(--accent);
+
+  transition: height 0.3s ease;
+}
+
+.technology-item:hover::before {
+  height: 34%;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-item {
+  position: relative;
+}
+
+.contact-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 2px;
+  height: 0;
+
+  background: var(--accent);
+
+  transform: translateY(-50%);
+
+  transition: height 0.3s ease;
+}
+
+.contact-item:hover::before {
+  height: 45%;
+}
+
+.contact-arrow {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.25s ease;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer-logo {
+  display: flex;
+
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 36px;
+  height: 36px;
+
+  object-fit: cover;
+
+  border-radius: 9px;
+
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover img {
+  transform: rotate(-3deg) scale(1.07);
+}
+
+.back-to-top {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.back-to-top span {
+  transition: transform 0.25s ease;
+}
+
+.back-to-top:hover span {
+  transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   TEXT SELECTION
+===================================================== */
+
+::selection {
+  color: #07110f;
+
+  background: var(--accent);
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .hero-enter {
+    opacity: 1 !important;
+
+    transform: none !important;
+  }
+}
+
+
+/* =====================================================
+   MOBILE MOTION
+===================================================== */
+
+@media (max-width: 900px) {
+  .navbar {
+    position: sticky;
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(30px);
+  }
+
+  .reveal-left.is-visible,
+  .reveal-right.is-visible {
+    transform: translateY(0);
+  }
+}
